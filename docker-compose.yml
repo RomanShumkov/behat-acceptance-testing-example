@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+    behat:
+        image: php:7.2
+        volumes:
+            - ./:/usr/local/src/behat-acceptance-testing-example
+        working_dir: /usr/local/src/behat-acceptance-testing-example
+        entrypoint: vendor/bin/behat
+        depends_on:
+            - chrome
+
+    selenium-hub:
+        image: selenium/hub:3.141.5-astatine
+        container_name: selenium-hub
+        ports:
+            - "4444:4444"
+
+    chrome:
+        image: selenium/node-chrome:3.141.5-astatine
+        depends_on:
+            - selenium-hub
+        environment:
+            - HUB_HOST=selenium-hub
+            - HUB_PORT=4444
+
+    php:
+        image: php:7.2
+        volumes:
+            - ./:/usr/local/src/behat-acceptance-testing-example
+        working_dir: /usr/local/src/behat-acceptance-testing-example
+
+    composer:
+        image: composer:1.7
+        volumes:
+            - ./:/usr/local/src/behat-acceptance-testing-example
+        working_dir: /usr/local/src/behat-acceptance-testing-example

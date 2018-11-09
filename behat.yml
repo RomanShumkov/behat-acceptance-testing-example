@@ -1,0 +1,23 @@
+default:
+    extensions:
+        Behat\MinkExtension:
+            base_url: https://springfieldil.craigslist.org
+            default_session: selenium2
+            browser_name: chrome
+            selenium2:
+                wd_host: "http://selenium-hub:4444/wd/hub"
+        SensioLabs\Behat\PageObjectExtension: ~
+        Bex\Behat\ScreenshotExtension:
+            image_drivers:
+                local:
+                    screenshot_directory: "screenshots"
+                    clear_screenshot_directory: true
+    suites:
+        acceptance:
+            mink_session: selenium2
+            browser_name: chrome
+            paths:
+                - "%paths.base%/features"
+            contexts:
+                - LV\Shumkov\BehatAcceptanceTestingExample\Behat\Contexts\FeatureContext
+                - Behat\MinkExtension\Context\MinkContext

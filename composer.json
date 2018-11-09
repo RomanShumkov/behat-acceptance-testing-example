@@ -1,0 +1,23 @@
+{
+  "name": "roman-shumkov/behat-acceptance-testing-example",
+  "license": "MIT",
+  "type": "project",
+  "autoload": {
+      "psr-4": {"LV\\Shumkov\\BehatAcceptanceTestingExample\\": "src/"}
+  },
+  "require": {
+      "php": ">=7.2",
+      "behat/behat": "^3.5",
+      "sensiolabs/behat-page-object-extension": "^2.1",
+      "behat/mink-extension": "^2.3",
+      "behat/mink-selenium2-driver": "^1.3",
+      "bex/behat-screenshot": "^1.2",
+      "phpunit/phpunit": "^7.4"
+  },
+  "repositories": {
+      "packagist.org": {
+        "type": "composer",
+        "url": "https://packagist.org"
+    }
+  }
+}
